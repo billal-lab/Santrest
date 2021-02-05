@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Santrest!{% endblock %}
+
+{% block body %}
+<style>
+</style>
+
+<div class="container mt-4">
+    <div class="row">
+         <div class="col-md-5 mx-auto">
+            <div class="card" style="width: 25rem;">
+                <img class="card-img-top" src="{{ (sant.imageName ? vich_uploader_asset(sant) : asset('uploads/images/placeholder.png')) | imagine_filter('style_meduim') }}" alt="{{ sant.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ sant.title }}</h5>
+                    <p class="card-text">{{ sant.description  }}</p>
+                    <p class="card-text"><small class="text-muted">Posted by: [{{sant.getUser.getFirstName}}] {{sant.createdAt|ago}}</small></p>
+                    {# <a href="{{ path('app_sant_show',{id: sant.id}) }}" class="text-decoration-none"></a> #}
+                </div>
+                <div class="pl-3 pb-3">
+                    
+                    <a class="btn btn-info" href="{{path('app_sant_edit',{id: sant.id})}}">Edit</a>
+                    <a class = "btn btn-danger"href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-sant-delete-form').submit();">Delete</a>
+                    <form id="js-sant-delete-form" action="{{ path('app_sant_delete', {id: sant.id}) }}" method="post" style="display: none;">
+                        {# ajouter un crsf next time #}
+                        <input type="hidden" name="_method" value="DELETE">
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

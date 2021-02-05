@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}new sant{% endblock %}
+
+{% block body %}
+<style>
+    .btn.btn-primary {
+  width: 100%; 
+}
+</style>
+
+<div class="example-wrapper">
+    
+    <div class="container mt-4">
+        <h1>Create Sant</h1>
+        {{form_start(form)}}
+        {{form_widget(form)}} 
+            <input type="submit" value ="Create" class="btn btn-large btn-primary btn-block mt-2" formnovalidate>
+        {{form_end(form)}}
+    </div>
+</div>
+{% endblock %}

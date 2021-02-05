@@ -3,19 +3,24 @@
 {% block title %}Santrest!{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
 
-<div class="example-wrapper">
-    
-    <h1>{{pluralize(sants|length,"Sant", "Sants")}}✅</h1>
+<div class="container">
+    {# flash message #}
+    <h1 class="text-center">{{pluralize(sants|length,"Sant", "Sants")}}</h1>
+    <div class="row mt-4">
     {% for sant in sants %}
-        <article>
-            <h2>{{ sant.title }}</h2>
-            <p> {{ sant.description }} </p>
-        </article>
+         <div class="col-4 mb-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="{{ (sant.imageName ? vich_uploader_asset(sant) : asset('uploads/images/placeholder.png')) | imagine_filter('style_meduim') }}" alt="{{ sant.title }}">
+                <div class="card-body">
+                    <h5 class="card-title">{{ sant.title }}</h5>
+                    {# <p class="card-text">{{ sant.description | u.truncate(20, '...', false) }}</p> #}
+                    <p class="card-text"><small class="text-muted">created {{sant.createdAt|ago}}</small></p>
+                    <a href="{{ path('app_sant_show',{id: sant.id}) }}" class="stretched-link text-decoration-none"></a>
+                </div>
+            </div>
+        </div>
     {% endfor %}
+    </div>
 </div>
 {% endblock %}
