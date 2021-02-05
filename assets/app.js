@@ -22,12 +22,12 @@ $(".custom-file-input").on("change", function (e) {
     
 });
 
-function f(){
-    alert("second messsage");
-}
+// function f(){
+//     alert("second messsage");
+// }
 
-$( ".navbar" ).hover(
-    function() {
-      alert("message");
-    }
-);
+// $( ".navbar" ).hover(
+//     function() {
+//       alert("message");
+//     }
+// );
