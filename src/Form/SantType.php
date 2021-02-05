@@ -23,6 +23,17 @@ class SantType extends AbstractType
             // 'image_uri' => true,
             'imagine_pattern' => 'style_small',
             // 'asset_helper' => true,
+            'constraints' => [
+                new File([
+                    // 'maxSize' => '1024k',
+                    'mimeTypes' => [
+                        'image/png',
+                        'image/jpeg',
+                        'image/gif',
+                    ],
+                    'mimeTypesMessage' => 'Please upload a valid png, jpeg or gif',
+                ])
+            ],
         ])->add('title')->add('description');
     }
 
