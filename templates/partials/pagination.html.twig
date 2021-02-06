@@ -1,13 +1,21 @@
 <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-center">
-            <li class="page-item">
-            <a class="page-link" href="/?page={{(page>1)? page-1 : page}}">Previous</a>
+
+            <li class="page-item {{(page <= 1 )? 'disabled' : ''}}">
+                <a class="page-link" href="/?page={{page-1}}">Previous</a>
             </li>
+
             {% for i in 1..((numberOfSants/limit)|round)%}
-            
-            <li class="page-item {{(page == i)? 'active' : ''}}"><a class="page-link" href="/?page={{i}}">{{i}}</a></li>
-            {% endfor %}
-            <a class="page-link" href="/?page={{(page < (numberOfSants/limit)|round)? page+1 : page}}">Next</a>
+    
+            <li class="page-item {{(page == i)? 'active' : ''}}">
+                <a class="page-link" href="/?page={{i}}">{{i}}</a>
             </li>
+
+            {% endfor %}
+
+            <li class="page-item {{(page >= ((numberOfSants/limit)|round) )? 'disabled' : ''}}">
+                <a class="page-link" href="/?page={{page+1}}">Next</a>
+            </li>
+
         </ul>
 </nav>

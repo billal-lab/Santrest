@@ -28,10 +28,11 @@ class SantsController extends AbstractController
     
     public function index(SantRepository $SantRepository, Request $request ): Response
     {   
-        $limit = 10;
+        $limit = 9;
         $page = $request->query->get("page",1);
+        if($page<1) $page=1;
         $numberOfSants = $SantRepository->findNumberOfSants()[0][1];
-        $sants = $SantRepository->findBy([],['createdAt'=>'DESC'],$limit,($page*$limit)-$limit);
+        $sants = $SantRepository->findBy([],['createdAt'=>'ASC'],$limit,($page*$limit)-$limit);
         return $this->render('sants/index.html.twig',compact('sants','numberOfSants','limit','page'));
     }
      /**
