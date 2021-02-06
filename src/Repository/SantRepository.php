@@ -19,6 +19,15 @@ class SantRepository extends ServiceEntityRepository
         parent::__construct($registry, Sant::class);
     }
 
+    public function findNumberOfSants()
+    {
+        return $this->createQueryBuilder('s')
+            ->select('COUNT(s)')
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Sant[] Returns an array of Sant objects
     //  */

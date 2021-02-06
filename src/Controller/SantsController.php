@@ -26,12 +26,14 @@ class SantsController extends AbstractController
      * @Route("/sants", name="app_home_sants")
      */
     
-    public function index(SantRepository $SantRepository): Response
-    {    
-        $sants = $SantRepository->findBy([],['createdAt'=>'DESC']);
-        return $this->render('sants/index.html.twig',compact('sants'));
+    public function index(SantRepository $SantRepository, Request $request ): Response
+    {   
+        $limit = 10;
+        $page = $request->query->get("page",1);
+        $numberOfSants = $SantRepository->findNumberOfSants()[0][1];
+        $sants = $SantRepository->findBy([],['createdAt'=>'DESC'],$limit,($page*$limit)-$limit);
+        return $this->render('sants/index.html.twig',compact('sants','numberOfSants','limit','page'));
     }
-
      /**
      * @Route("/sants/{id<[0-9]+>}", name="app_sant_show")
      */
