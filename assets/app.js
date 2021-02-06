@@ -13,7 +13,7 @@ import './bootstrap';
 
 import $ from "jquery";
 
-$(".custom-file-input").on("change", function (e) {
+$(".custom-file-input").on("change", function (e) { //jquery
     var inputFile = e.currentTarget;
     $(inputFile)
         .parent()
@@ -22,10 +22,20 @@ $(".custom-file-input").on("change", function (e) {
     
 });
 
-// function f(){
-//     alert("second messsage");
-// }
+// $(".navbar").on("click", function (e) {
+//     alert("jquery effects");
+    
+// });
 
+document.getElementById("delete").addEventListener("click", function (e){ //javascript
+    e.preventDefault();
+    confirm('Are you sure ?') && document.getElementById('js-sant-delete-form').submit();
+});
+
+// document.getElementById("logout").addEventListener("click", function (e){ //javascript
+//     e.preventDefault();
+//     document.getElementById('js-logout-form').submit();
+// });
 // $( ".navbar" ).hover(
 //     function() {
 //       alert("message");

@@ -20,11 +20,11 @@
                 <div class="pl-3 pb-3">
                     
                     <a class="btn btn-info" href="{{path('app_sant_edit',{id: sant.id})}}">Edit</a>
-                    <a class = "btn btn-danger"href="#" onclick="event.preventDefault(); confirm('Are you sure?') && document.getElementById('js-sant-delete-form').submit();">Delete</a>
+                    <a class = "btn btn-danger"href="#" id="delete" >Delete</a>
                     <form id="js-sant-delete-form" action="{{ path('app_sant_delete', {id: sant.id}) }}" method="post" style="display: none;">
                         {# ajouter un crsf next time #}
                         <input type="hidden" name="_method" value="DELETE">
-                    </form> 
+                    </form>
                 </div>
             </div>
         </div>
